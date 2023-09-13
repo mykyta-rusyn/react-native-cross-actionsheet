@@ -1,4 +1,3 @@
-index.ts
 .eslintrc.js
 .prettierrc.js
 package-lock.json
@@ -11,5 +10,3 @@ android/.idea/
 android/build/
 android/.gradle/
 android/gradle/
-*.ts
-!*.d.ts
