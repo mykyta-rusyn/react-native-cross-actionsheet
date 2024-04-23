@@ -2,6 +2,7 @@
 <LinearLayout
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
     android:id="@+id/fragment_history_menu_bottom"
+    android:layout_marginTop="30dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
@@ -34,12 +35,12 @@
     </LinearLayout>
     <ListView
         android:id="@+id/actionsheet_list"
-        android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:divider="#DDD"
         android:dividerHeight="1dp"
-        android:headerDividersEnabled="true"
-        />
+        android:headerDividersEnabled="true" />
     <LinearLayout
         android:id="@+id/actionsheet_cancel_view"
         android:clickable="true"
