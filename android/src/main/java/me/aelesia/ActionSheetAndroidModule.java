@@ -1,7 +1,6 @@
 package me.aelesia;
 
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
@@ -53,7 +52,6 @@ public class ActionSheetAndroidModule extends ReactContextBaseJavaModule {
                         }
                     }
 
-
                     BottomSheetDialog dialog = new BottomSheetDialog(getCurrentActivity(), R.style.BottomSheetDialog);
                     dialog.setContentView(R.layout.actionsheet);
 
@@ -87,20 +85,20 @@ public class ActionSheetAndroidModule extends ReactContextBaseJavaModule {
                     if (title != null || message != null) {
                         View border = new View(reactContext);
                         border.setBackgroundColor(Color.parseColor("#DDDDDD"));
-                        border.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 1));
+                        border.setLayoutParams(new android.widget.AbsListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 1));
                         listView.addHeaderView(border);
                     }
+
                     ActionSheetListAdapter adapter = new ActionSheetListAdapter(reactContext, strList, destructiveIndex, tintColor, position -> {
                         dialog.dismiss();
                         isShowingDialog = false;
                         promise.resolve(position);
                     });
-                    listView.setAdapter(adapter);
 
                     if (cancel != null) {
                         View border = new View(reactContext);
                         border.setBackgroundColor(Color.parseColor("#DDDDDD"));
-                        border.setLayoutParams(new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 6));
+                        border.setLayoutParams(new android.widget.AbsListView.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 6));
                         listView.addFooterView(border);
 
                         dialog.findViewById(R.id.actionsheet_list);
@@ -120,6 +118,7 @@ public class ActionSheetAndroidModule extends ReactContextBaseJavaModule {
                         });
                     }
 
+                    listView.setAdapter(adapter);
                     isShowingDialog = true;
                     dialog.show();
                 }
