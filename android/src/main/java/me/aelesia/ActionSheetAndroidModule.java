@@ -74,14 +74,13 @@ public class ActionSheetAndroidModule extends ReactContextBaseJavaModule {
                         }
                     }
 
-                    if (cancel == null) {
-                        dialog.setCancelable(false);
-                    } else {
-                        dialog.setOnCancelListener(dialog1 -> {
-                            isShowingDialog = false;
-                            promise.resolve(-1);
-                        });
-                    }
+
+                    dialog.setCancelable(false);
+                    dialog.setCanceledOnTouchOutside(true);
+                    dialog.setOnCancelListener(dialog1 -> {
+                        isShowingDialog = false;
+                        promise.resolve(-1);
+                    });
 
                     ListView listView = dialog.findViewById(R.id.actionsheet_list);
                     if (title != null || message != null) {
