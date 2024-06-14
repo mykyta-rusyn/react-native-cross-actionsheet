@@ -60,7 +60,7 @@ async function iosOptions(cfg: ActionSheetConfig) {
           if (cfg.cancel && cfg.cancel.onPress) {
             res(await cfg.cancel?.onPress())
           } else {
-            res()
+            res(undefined)
           }
         } else {
           res(cfg.options[buttonIndex].onPress())
@@ -73,6 +73,7 @@ async function iosOptions(cfg: ActionSheetConfig) {
 export const ActionSheet = new (class {
   showActionSheetWithOptions(options: ActionSheetIOSOptions, callback: (buttonIndex: number) => void) {
     if (Platform.OS === 'android') {
+      //@ts-ignore
       ActionSheetAndroid.showActionSheetWithOptions(options, callback)
     } else if (Platform.OS === 'ios') {
       ActionSheetIOS.showActionSheetWithOptions(options, callback)
